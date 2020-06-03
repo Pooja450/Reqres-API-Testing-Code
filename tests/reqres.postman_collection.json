@@ -1,0 +1,150 @@
+{
+	"info": {
+		"_postman_id": "dca9f8dc-2a38-41f4-8ffc-668605a1035b",
+		"name": "reqres",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "RegisterUser",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "7f11a86a-b4e6-48b0-bc48-e462f97ef2ae",
+						"exec": [
+							"pm.test(\"Status code is not 200\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"email\":\"{{email}}\",\n\t\"password\":\"{{password}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://reqres.in/api/register",
+					"protocol": "https",
+					"host": [
+						"reqres",
+						"in"
+					],
+					"path": [
+						"api",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreateUser",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "9511ec9c-bd8d-4e5c-854a-58b81da9c952",
+						"exec": [
+							" \r",
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"name\");\r",
+							"    pm.expect(pm.response.text()).to.include(\"job\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\":\"{{name}}\",\n\t\"job\":\"{{job}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://reqres.in/api/users",
+					"protocol": "https",
+					"host": [
+						"reqres",
+						"in"
+					],
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "a9b7243e-0f58-4d2d-9f2e-33faee473249",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "18fbd386-ebc1-470f-9fd6-438b0e89aa92",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "2ca80434-64aa-4aef-a980-1013fec5e62a",
+			"key": "email",
+			"value": "pioioja@gmail.com",
+			"type": "string"
+		},
+		{
+			"id": "af53576a-921b-48a7-9238-4aad264e8d1e",
+			"key": "password",
+			"value": "adi@gmail.com",
+			"type": "string"
+		},
+		{
+			"id": "ae488aae-8677-4992-afe6-4dc4125ba759",
+			"key": "name",
+			"value": "Adfi",
+			"type": "string"
+		},
+		{
+			"id": "8ee143f6-3bbe-4bcd-a946-b8f4ae2bba0a",
+			"key": "job",
+			"value": "Manager",
+			"type": "string"
+		}
+	],
+	"protocolProfileBehavior": {}
+}
